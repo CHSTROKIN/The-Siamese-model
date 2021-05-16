@@ -59,7 +59,7 @@ def get_pic_(path):
         plt.imshow(data)
         datalist.append(data) 
     return datalist
-# 创建孪生网络模型的方法
+
 def build_siamese_model(input_shape):
     # specify the inputs for the feature extractor network
     inputs = Input(input_shape)
@@ -81,43 +81,7 @@ def build_siamese_model(input_shape):
     return my_model
  
  
-# 创建图像对的方法
-def make_pairs(images, labels):
-    # 初始化两个空数组（图像对）和（标签，用来说明图像对是正向还是负向）
-    pair_images = []
-    pair_labels = []
-    # 计算数据集中存在的类总数，然后为每个类标签建立索引列表，该列表为具有给定标签的所有示例提供索引
-    num_classes = len(np.unique(labels))
-    idx = [np.where(labels == i)[0] for i in range(0, num_classes)]
- 
-    # 遍历所有图像
-    for idxA in range(len(images)):
-        # grab the current image and label belonging to the current
-        # iteration
-        current_image = images[idxA]
-        label = labels[idxA]
-        # randomly pick an image that belongs to the *same* class
-        # label
-        idx_b = np.random.choice(idx[label])
-        pos_image = images[idx_b]
-        # prepare a positive pair and update the images and labels
-        # lists, respectively
-        pair_images.append([current_image, pos_image])
-        pair_labels.append([1])
-        # grab the indices for each of the class labels *not* equal to
-        # the current label and randomly pick an image corresponding
-        # to a label *not* equal to the current label
-        neg_idx = np.where(labels != label)[0]
-        neg_image = images[np.random.choice(neg_idx)]
-        # prepare a negative pair of images and update our lists
-        pair_images.append([current_image, neg_image])
-        pair_labels.append([0])
-        # return a 2-tuple of our image pairs and labels
- 
-    return np.array(pair_images), np.array(pair_labels)
- 
- 
-# 保存训练数据
+
 def plot_training(h, plot_path):
     # construct a plot that plots and saves the training history
     plt.style.use("ggplot")
@@ -177,7 +141,7 @@ featureExtractor = build_siamese_model(IMG_SHAPE)
 featsA = featureExtractor(imgA)
 featsB = featureExtractor(imgB)
     
-# 建立神经网络
+
 distance = euclidean_distance([featsA, featsB])
 outputs = Dense(1, activation="sigmoid")(distance)
 model = Model(inputs=[imgA, imgB], outputs=outputs)
