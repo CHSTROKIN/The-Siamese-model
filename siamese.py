@@ -110,6 +110,7 @@ def reshapes(embed1):
     embed = tf.reshape(embed1, [-1, 256, 32, 1])
 
 def paring_list(list_ans):
+ #the function that lable the picture with 0 and 1 label
     res=[]
     lab=[]
     for i in range(len(list_ans)):
@@ -119,6 +120,7 @@ def paring_list(list_ans):
         res.append([list_ans[i],list_ans[i]]) 
         lab.append([1])
     return np.array(res),np.array(lab)
+
 picture_path='D:\\TRAINING_csv\\2018.10.29'
 list_a=[]
 list_a=get_pic_(picture_path)
