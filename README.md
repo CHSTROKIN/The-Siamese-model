@@ -4,16 +4,9 @@ The research and implementation of siamese model on shoes industries
 This model is designed to compare the similarity between the shoes 
 
 
-![plot](https://user-images.githubusercontent.com/34977913/117527414-7d14c800-affe-11eb-95a1-0d1f8c255008.png)
-
-YES IT IS THE PERFORMANCE OF THE MODEL THAT JUST TRAIN ONE EPOCH!!!!!
-
-![p2](https://user-images.githubusercontent.com/34977913/117654281-180cce00-b1c8-11eb-8877-5e8610955fa0.png)
 
 ![plot](https://user-images.githubusercontent.com/34977913/118121783-8c43ad80-b424-11eb-802a-b56eab4e28a1.png)
 
-
-so I encourage you to train the model more 
 
 The structure of the model is below
 
